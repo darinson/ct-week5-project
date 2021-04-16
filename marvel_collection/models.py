@@ -23,6 +23,8 @@ class User(db.Model, UserMixin):
     token = db.Column(db.String, default = '', unique = True)
     date_created = db.Column(db.DateTime, nullable = False, default = datetime.utcnow)
 
+    character = db.relationship('Character', backref = 'owner', lazy = True)
+
     def __init__(self,email,name = '',password = ''):
         self.id = self.set_id()
         self.name = name
@@ -42,3 +44,35 @@ class User(db.Model, UserMixin):
 
     def __repr__(self):
         return f'User {self.email} has been created and added to database!'
+
+class Character(db.Model):
+    id = db.Column(db.String, primary_key = True)
+    name = db.Column(db.String(150))
+    description = db.Column(db.String(300))
+    comics_appeared_in = db.Column(db.Numeric(precision=4))
+    super_power = db.Column(db.String(150))
+    date_created = db.Column(db.DateTime, nullable = False, default = datetime.utcnow)
+    user_taken = db.Column(db.String, db.ForeignKey('user.token'), nullable = False)
+
+    def __init__(self,name,description,comics_appeared_in,super_power,date_created,user_taken,id = ''):
+        self.id = self.set_id()
+        self.name = name
+        self.description = description
+        self.comics_appeared_in = comics_appeared_in
+        self.super_power = super_power
+        self.date_created = date_created
+        self.user_token = user_token
+        
+    def __repr__(self):
+        return f'{self.name} has been added to the MCD Collection!'
+
+    def set_id(self):
+        return secrets.token_urlsafe()
+
+class CharacterSchema(ma.Schema):
+    class Meta:
+        fields = ['id','name','description','comics_appeared_in','auper_power','date_created']
+
+
+character_schema = CharacterSchema()
+characters_schema = CharacterSchema(many = True)
