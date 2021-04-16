@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main class="px-3">
+    {% with messages = get_flashed_messages(with_categories = true) %}
+    {% if messages %}
+    {% for cat,msg in messages %}
+    {% if cat == 'user-created'%}
+    <div class="alert alert-success">
+        {{ msg }}
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <h1 class="cover-heading">Marvel Character Database</h1>
+    <p class="lead">Learn about the characters of the Marvel Universe and make them yours. Sign up and start adding to
+        your collection today!</p>
+    <p class="lead">
+        <a href="#" class="btn btn-lg btn-secondary fw-bold border-white bg-white" style="color:black">Sign Up</a>
+    </p>
+</main>
+{% endblock content %}
