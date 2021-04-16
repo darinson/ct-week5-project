@@ -1,1 +1,14 @@
-\
+a.nav-link> li{
+    list-style-type: none;
+    display:inline;
+    text-decoration:none;
+    padding: 0.5vw;
+    color:white !important;
+    font-weight: bold;
+}
+
+a.nav-link:nth-last-child(1){
+    border: 2px solid red;
+    border-radius: 11px;
+    margin-right: 0.2vw;
+}
