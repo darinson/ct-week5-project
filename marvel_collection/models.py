@@ -2,12 +2,20 @@ from flask_sqlalchemy import SQLAlchemy
 import uuid
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import LoginManager, UserMixin
+from flask_marshmallow import Marshmallow 
 
 import secrets
 
 db = SQLAlchemy()
+login_manager = LoginManager()
+ma = Marshmallow()
 
-class User(db.Model):
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(user_id)
+
+class User(db.Model, UserMixin):
     id = db.Column(db.String, primary_key = True)
     name = db.Column(db.String(300), nullable = False, default = '')
     email = db.Column(db.String(150), nullable = False)

@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 from marvel_collection.forms import UserLoginForm
-from marvel_collection.models import User, db
+from marvel_collection.models import User, db, check_password_hash
+from flask_login import login_user, logout_user, login_required
 
 auth = Blueprint('auth',__name__,template_folder='auth_templates')
 
@@ -41,7 +42,7 @@ def signin():
             if logged_user and check_password_hash(logged_user.password, password):
                 login_user(logged_user)
                 flash(f'Welcome back, {logged_user.name}! You were successfully logged in.', 'auth-sucess')
-                return redirect(url_for('site.index'))
+                return redirect(url_for('site.home'))
             else:
                 flash('Your email/password is incorrect', 'auth-failed')
 
@@ -52,8 +53,8 @@ def signin():
 
     return render_template('signin.html', form = form)
 
-# @auth.route('/logout')
-# # @login_required #need to import
-# def logout():
-#     # logout_user() #need to import
-#     return redirect(url_for('site.home'))
+@auth.route('/logout')
+@login_required #need to import
+def logout():
+    logout_user() #need to import
+    return redirect(url_for('site.home'))

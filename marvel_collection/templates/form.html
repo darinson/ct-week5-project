@@ -1,6 +1,7 @@
 <form method="post" style="max-width: 400px; margin: auto auto;">
     {{ form.hidden_tag() }}
     <div class="form-floating" style="color: gray;">
+        <!-- How to make this only show up for Sign Up form? -->
         <fieldset id="name-field">
             {{ form.name.label }}
             {{ form.name(class = 'form-control', placeholder = "Enter Name" ) }}
