@@ -2,20 +2,19 @@ from flask import Blueprint, request, jsonify
 from marvel_collection.helpers import token_required
 from marvel_collection.models import User, Character, character_schema, characters_schema, db, ma
 
-api = Blueprint('api',__name__,url_prefix='/api') #the url that goes into insomnia
+api = Blueprint('api',__name__,url_prefix='/api')
 
 #CREATE Character
-@api.route('/characters', methods = ['POST']) #where is /cars referenced?
+@api.route('/characters', methods = ['POST'])
 @token_required
-def create_car(current_user_token):
+def create_character(current_user_token):
     name = request.json['name']
     description = request.json['description']
     comics_appeared_in = request.json['comics_appeared_in']
     super_power = request.json['super_power']
-    date_created = request.json['date_created']
     user_token = current_user_token.token
 
-    character=Character(name,description,comics_appeared_in,super_power,date_created,user_token = user_token)
+    character=Character(name,description,comics_appeared_in,super_power,user_token = user_token)
 
     db.session.add(character)
     db.session.commit()
@@ -50,7 +49,6 @@ def update_character(current_user_token, id):
     character.description = request.json['description']
     character.comics_appeared_in = request.json['comics_appeared_in']
     character.super_power = request.json['super_power']
-    character.date_created = request.json['date_created']
     character.user_token = current_user_token.token
 
     db.session.commit()
