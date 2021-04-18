@@ -21,13 +21,26 @@
     {% endif %}
     {% endwith %}
     <h1 class="cover-heading">Marvel Character Database</h1>
-    <p class="lead">Learn about the characters of the Marvel Universe and make them yours. Sign up and start adding to
-        your collection today!</p>
+    <img src="https://media.comicbook.com/2018/02/marvel-studios-first-10-years-banner-1081327.jpeg"
+        alt="Marvel Banner">
+    {% if current_user.is_authenticated %}
+    <p class="lead">Build your own Marvel character collection and fill it with your favorite superheroes. Add to your
+        collection today!</p>
+    <p class="lead">
+        <a href="{{ url_for('site.addcharacter') }}" class="btn btn-lg btn-secondary fw-bold border-white bg-white"
+            style="color:black">Add Character</a>
+    </p>
+    {% else %}
+    <p class="lead">Build your own Marvel character collection and fill it with your favorite superheroes. Sign up to
+        create your own
+        collection today!</p>
     <p class="lead">
         <a href="{{ url_for('auth.signup') }}" class="btn btn-lg btn-secondary fw-bold border-white bg-white"
             style="color:black">Sign Up</a>
         <a href="{{ url_for('auth.signin') }}" class="btn btn-lg btn-secondary fw-bold border-white bg-white"
             style="color:black">Sign In</a>
     </p>
+    {% endif %}
+
 </main>
 {% endblock content %}

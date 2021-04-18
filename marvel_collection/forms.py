@@ -13,5 +13,4 @@ class NewCharacterEntry(FlaskForm):
     description = StringField('Description',validators = [DataRequired()])
     comics_appeared_in = IntegerField('Number of Comics Appeared In',validators = [DataRequired()])
     super_power = StringField('Super Power',validators=[DataRequired()])
-    user_token = StringField('Your User Token', validators = [DataRequired()])
     submit_button = SubmitField()

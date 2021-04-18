@@ -23,11 +23,10 @@ def addcharacter():
             description = form.description.data
             comics_appeared_in = form.comics_appeared_in.data
             super_power = form.super_power.data
-            user_token = form.user_token.data
+            user_token = current_user.token
             print("Character: ", name, description, comics_appeared_in, super_power)
             print("For User #", user_token)
 
-            #need help, how to add current user (already signed in)'s token without having them manually input the token?
             character = Character(name = name, description = description, comics_appeared_in = comics_appeared_in, super_power = super_power, user_token = user_token)
 
             logged_user = User.query.filter(User.token == user_token).first()
