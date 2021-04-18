@@ -1,1 +1,1 @@
-web: gunicorn marvel_collection:app --preload
+web: gunicorn marvel_collection:app --preload --timeout 60
