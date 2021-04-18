@@ -6,3 +6,5 @@ This app allows you to create an account, add characters to your collection and 
 Name: Dwight K. Shrute
 Email: assistantregionalmanager@dundermifflin.com
 Password: Dwight
+### Try adding a character to Dwight's Collection
+### Go to My Profile to view Dwight's Collection
