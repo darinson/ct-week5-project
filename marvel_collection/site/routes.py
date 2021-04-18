@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 from marvel_collection.forms import NewCharacterEntry
 from marvel_collection.models import User, Character, db
-from flask_login import login_required
+from flask_login import login_required, current_user
 
 site = Blueprint('site',__name__,template_folder='site_templates')
 
@@ -49,4 +49,6 @@ def addcharacter():
 @site.route('/profile')
 @login_required
 def profile():
-    return render_template('profile.html')
+    logged_user = User.query.filter(User.token == current_user.token).first()
+    usercollection = Character.query.filter(Character.user_token == logged_user.token).all()
+    return render_template('profile.html', entries = usercollection)

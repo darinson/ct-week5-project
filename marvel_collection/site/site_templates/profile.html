@@ -15,7 +15,7 @@
         <h2 style="color:black; text-align: left;">Profile Information</h2>
         <div class="row shadow-sm">
             <div class="col-sm-5">
-                <img class="card-img" src="../../static/images/profile_pic.svg" alt="Suresh Dasari Card"
+                <img class="card-img" src="../../static/images/profile_pic.svg" alt="Profile Picture"
                     style="padding:20px" ;>
             </div>
             <div class="col-sm-7">
@@ -27,6 +27,19 @@
                         </p>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="container col-12" style="margin-top: 50px;">
+        <h2 style="color:black; text-align: left; margin-bottom: 25px">My Collection</h2>
+        <div class="row shadow-sm" style="color:black">
+            {% for char in entries %}
+            <div class="col-sm-4">
+                <h2>{{ char.name }}</h2>
+                <p><strong>Description: </strong>{{ char.description }}</p>
+                <p><strong># of Comics Appeared In: </strong>{{ char.comics_appeared_in }}</p>
+                <p><strong>Super Power: </strong>{{ char.super_power }}</p>
+            </div>
+            {% endfor %}
         </div>
     </div>
 </div>
