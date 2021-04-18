@@ -22,11 +22,11 @@
                     <a class="nav-link" href="{{ url_for('site.home') }}">
                         <li>Home</li>
                     </a>
-                    <a class="nav-link" href="{{ url_for('site.collection') }}">
-                        <li>Characters</li>
+                    <a class="nav-link" href="{{ url_for('site.addcharacter') }}">
+                        <li>Add Character</li>
                     </a>
                     <a class="nav-link" href="{{ url_for('site.profile') }}">
-                        <li>Profile</li>
+                        <li>My Profile</li>
                     </a>
                     {% if current_user.is_authenticated %}
                     <a class="nav-link" href="{{ url_for('auth.logout') }}">

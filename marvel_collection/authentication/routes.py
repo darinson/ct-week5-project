@@ -54,7 +54,7 @@ def signin():
     return render_template('signin.html', form = form)
 
 @auth.route('/logout')
-@login_required #need to import
+@login_required
 def logout():
-    logout_user() #need to import
+    logout_user()
     return redirect(url_for('site.home'))
