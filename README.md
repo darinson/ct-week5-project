@@ -3,8 +3,8 @@ This app allows you to create an account, add characters to your collection and 
 
 ## View sample account for demo
 ### Sign In Info:
-Name: Dwight K. Shrute
-Email: assistantregionalmanager@dundermifflin.com
-Password: Dwight
+Name: Dwight K. Shrute<br />
+Email: assistantregionalmanager@dundermifflin.com<br />
+Password: Dwight<br />
 ### Try adding a character to Dwight's Collection
 ### Go to My Profile to view Dwight's Collection
